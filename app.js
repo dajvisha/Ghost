@@ -33,6 +33,23 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
+// Handlebars configuration 
+var hbs = require('hbs');
+var fs = require('fs');
+
+var partialsDir = __dirname + '/views/partials';
+var filenames = fs.readdirSync(partialsDir);
+
+filenames.forEach(function(filename) {
+  var matches = /^([^.]+).hbs$/.exec(filename);
+  if (!matches) {
+    return;
+  }
+  var name = matches[1];
+  var template = fs.readFileSync(partialsDir + '/' + filename, 'utf8');
+  hbs.registerPartial(name, template);
+});
+
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
