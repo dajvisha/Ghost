@@ -1,19 +1,16 @@
 {
   "name": "ghoston",
-  "version": "1.0.0",
-  "description": "A friendly way to visualize conversation responses from Dialogflow",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/diegoajv/GhostON.git"
-  },
-  "author": "DiegoAJV",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/diegoajv/GhostON/issues"
-  },
-  "homepage": "https://github.com/diegoajv/GhostON#readme"
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0"
+  }
 }
