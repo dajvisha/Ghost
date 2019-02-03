@@ -1,2 +1,26 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="index-background">
+    <div class="login-view">
+
+        <div class="login-box">
+
+            <div class="login-title">{{ login_form.title_label }}</div>
+
+            <div class="login-form">
+                <div class="login-input">
+                    <label for="name">{{ login_form.username_label }}</label>
+                    <input type="text" name="name" id="name">
+                </div>
+
+                <div class="login-input">
+                    <label for="pass">{{ login_form.password_label }}</label>
+                    <input type="password" name="pass" id="pass">
+                </div>
+
+                <div class="login-button">
+                    <button>{{ login_form.login_button }}</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
