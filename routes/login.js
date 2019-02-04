@@ -6,7 +6,7 @@ var labels = international.labels[international.language];
 
 /* POST login. */
 router.post('/', function(req, res, next) {
-    if (req.body.name && req.body.pass) {
+    if (req.body.email && req.body.pass) {
         res.redirect('/dash');
     }
     req.flash('login_error', labels.login_form.login_error);
