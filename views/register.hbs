@@ -3,8 +3,18 @@
 
     <div class="register-view">
 
-        <form class="register-box" action="/register" method="POST">
+        {{#if errors}}
+            {{#each errors}}
+                <div class="alert alert-danger" role="alert">
+                    {{ this.msg }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {{/each}}
+        {{/if}}
 
+        <form class="register-box" action="/register" method="POST">
             <div class="register-title">{{ register_form.title_label }}</div>
 
             <div class="register-form">
