@@ -7,6 +7,7 @@ var flash = require('express-flash');
 var session = require('express-session');
 var expressValidator = require('express-validator');
 var firebase = require('firebase');
+var bcrypt = require('bcrypt');
 var dotenv = require('dotenv').config();
 
 var indexRouter = require('./routes/index');
@@ -30,6 +31,7 @@ firebase.initializeApp(config);
 
 // view engine setup
 app.set('firebase', firebase);
+app.set('bcrypt', bcrypt);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 

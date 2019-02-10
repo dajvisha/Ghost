@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var bcrypt = require('bcrypt');
 var expressValidator = require('express-validator');
 
 var international = require('../resources/international');
@@ -25,6 +24,7 @@ router.post('/', function(req, res, next) {
     res.render('register', { register_form: labels.register_form, errors: errors });
   } else {
     var firebase = req.app.get('firebase');
+    var bcrypt = req.app.get('bcrypt');
 
     var name = req.body.name;
     var email = req.body.email;

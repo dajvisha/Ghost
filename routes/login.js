@@ -6,17 +6,26 @@ var labels = international.labels[international.language];
 
 /* POST login. */
 router.post('/', function (req, res, next) {
+    var firebase = req.app.get('firebase');
+    var bcrypt = req.app.get('bcrypt');
+
     var email = req.body.email;
     var pass = req.body.pass;
 
-    //var userInfo = firebaseLogin.database().ref('/Users/' + email);
-    //console.log(userInfo);
-    
-    if (req.body.email && req.body.pass) {
-        res.redirect('/dash');
-    }
-    req.flash('login_error', labels.login_form.login_error);
-    res.redirect('/');
+    var usersInfo = firebase.database().ref('/Users/').once('value').then(function(snapshot) {
+        snapshot.forEach(function(child) {
+            var user = child.val();
+            var userEmail = user.email;
+            var userPass = user.pass;
+
+            if (userEmail === email && bcrypt.compareSync(pass, userPass)) {
+                res.redirect('/dash');
+            }
+        });
+
+        req.flash('login_error', labels.login_form.login_error);
+        res.redirect('/');
+    });
 });
 
 module.exports = router;
